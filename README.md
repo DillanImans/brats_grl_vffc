@@ -10,7 +10,7 @@ This section will only cover the usage for configuring, training, visualizing, a
 I will say that while we have a lot of "config options", most other big feature edits such as augmentations, preprocessing, or model changes need to be manually edited in the code. If you read the code, you'll easily understand what you need to change. Though I'll try to explain the most important changes that you can make.
 
 
-##### Data Preproc + Augment changes
+### Data Preproc + Augment changes
 All changes are to be made in `brats.py` or `augment.py`.
 
 `augment.py` have *DataAugmenter* classes that are used to augment the data whilst IN TRAINING. I don't usually use this as I augment the data immediately before creating the data loader, hence I always turn off augment in the actual `train_grl.py`. Though if you want, you can make the data non-augmented and use the *DataAugmenter* class instead.
@@ -22,7 +22,7 @@ You want to edit the *BraTSBezierAug3DDataset* if you want to add preprocessing,
 
 
 
-##### Dataset Visualization
+### Dataset Visualization
 All changes are to be made in *visualizeDatasetTesting.py*
 
 Basically, this is to visualize the augmentations and transformations to the data. All you need to edit is in *inspect_and_visualize_dataset* at the bottom.
@@ -33,12 +33,12 @@ Basically, this is to visualize the augmentations and transformations to the dat
 
 It'll then output you a visualization_output.png which has a single slice of the data and the 3 labels (et, tc, wt).
 
-##### Training
+### Training
 All changes are to be made in `train_grl.py`
 
 1. *def main* is where you wanna edit a couple things. First of all, there is a section of cfg.model.architecture where it's all different model architectures with their own hyperparameters. You can change a lot of their hyperparameters here, mainly "in_channels" if you want to change different number of channels that you give (if you want to train more than one modality) as well as "num_domains" for the number of domains you want to give (right now its 1 in channel as its a single modality and 2 num_domains as its domain_label 1 and domain_label 2). There is also a section for the different datasets to use, most of them commented out. You can uncomment and comment out the one you want to use, but make sure the "in_channels" is changed appropriately depending on the number of modalities you pass. The current uncommented one is the GRL based one.
-2. The command you want to run is:
-`torchrun --nproc_per_node=4 train_grl.py     dataset.dataset_folder=/home/monetai/Desktop/dillan/dataBratsFormatted training.new_max_epochs=100 training.batch_size=1 training.val_every=5 training.learning_rate=1e-4 model.architecture=grlsegres_net training.schedule_alpha=True training.lambda_domain=0 training.resume=False`
+2. The command you want to run is: </br> </br>
+`torchrun --nproc_per_node=4 train_grl.py     dataset.dataset_folder=/home/monetai/Desktop/dillan/dataBratsFormatted training.new_max_epochs=100 training.batch_size=1 training.val_every=5 training.learning_rate=1e-4 model.architecture=grlsegres_net training.schedule_alpha=True training.lambda_domain=0 training.resume=False` </br> </br>
 Which I think is self explanatory on what you need to change depending on your preferences. To clarify further, "schedule_alpha" is the lambda scheduler, which starts at "lambda_domain = 0". If you change this to False, then the lambda will be constantly the one you set in "lambda_domain". If it's false and "lambda_domain = 0", then technically you are fully neglecting the GRL and only pass segmentation loss, making it a normal training WITHOUT GRL.
 
 For the dataset folder, you do need to make it organized correctly. Check the main github link [here](https://github.com/faizan1234567/Brain-Tumors-Segmentation/tree/main) to confirm your dataset's organization.
@@ -46,13 +46,13 @@ For the dataset folder, you do need to make it organized correctly. Check the ma
 After training, this will output a "segres_net_runs" folder that has the checkpoint and the best model you can use to test on.
 
 
-##### Testing and Evaluating
+### Testing and Evaluating
 All changes are to be made in `test.py` and `averageDiceTest.py`
 
 `test.py`
 1. Not much to change here. There is "in_channels" at line 156 to change if you want to use different number of modalities. There is also network architecture hyperparameters to change if you want. And also the dataset thing similar to the ones in training. For more details just check the training explanations above.
-2. The command you want to run is:
-`python test.py test.weights=/home/monetai/Desktop/dillan/code/brrr/Brain-Tumors-Segmentation/archiveModels/SEGRESNET_t2noaug/best-model/best-model.pkl dataset.dataset_folder=/home/monetai/Desktop/dillan/dataBratsFormatted test.batch=1 model.architecture=grlsegres_net`
+2. The command you want to run is: </br> </br>
+`python test.py test.weights=/home/monetai/Desktop/dillan/code/brrr/Brain-Tumors-Segmentation/archiveModels/SEGRESNET_t2noaug/best-model/best-model.pkl dataset.dataset_folder=/home/monetai/Desktop/dillan/dataBratsFormatted test.batch=1 model.architecture=grlsegres_net` </br> </br>
 You want to make sure that the .pkl points to a trained model, and the model.architecture uses the same exact architecture. The .pkl is obtained after you finish all training epochs, in the new outputted folder.
 
 `averageDiceTest.py`
@@ -60,7 +60,7 @@ After you do the test run, you'll get a csv. You can then run this .py file to g
 by editing the file_path correctly.
 
 
-##### Ratio of GIN and GOUT + Check Model
+### Ratio of GIN and GOUT + Check Model
 All changes to be made in `segresnet.py` and `check_model.py`
 
 `segresnet.py`
