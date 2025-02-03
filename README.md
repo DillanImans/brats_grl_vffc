@@ -7,6 +7,8 @@ This following file serves as an **informal** exploratory write-up on why I thou
 ## Code Usage
 This section will only cover the usage for configuring, training, visualizing, and testing for a DDP & GRL-based single-source domain segmentation on the BraTS 2021 dataset. If you want to do all these things using all 4 modalities from the BraTS dataset, refer to the [original repository](https://github.com/faizan1234567/Brain-Tumors-Segmentation/tree/main).
 
+Also, refer to the original repository above to setup the dataset and the library requirements and whatnot.
+
 I will say that while we have a lot of "config options", most other big feature edits such as augmentations, preprocessing, or model changes need to be manually edited in the code. If you read the code, you'll easily understand what you need to change. Though I'll try to explain the most important changes that you can make.
 
 
