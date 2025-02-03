@@ -1,5 +1,5 @@
 ## Exploratory write-up
-This following file serves as a X thousand word **informal** exploratory write-up on why I thought this method would improve performance in cross-modality single-source domain generalization for medical segmentation tasks. Take a look if you want to see my **thought process, related works, results, and evaluations** for this whole experiment. 
+This following file serves as an **informal** exploratory write-up on why I thought this method would improve performance in cross-modality single-source domain generalization for medical segmentation tasks. Take a look if you want to see my **thought process, related works, results, and evaluations** for this whole experiment. 
 
 (file icon here)
 
