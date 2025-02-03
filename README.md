@@ -1,7 +1,7 @@
 ## Exploratory write-up
 This following file serves as an **informal** exploratory write-up on why I thought this method would improve performance in cross-modality single-source domain generalization for medical segmentation tasks. Take a look if you want to see my **thought process, related works, results, and evaluations** for this whole experiment. 
 
-(file icon here)
+[Download pdf](https://github.com/DillanImans/brats_grl_vffc/blob/main/Exploratory%20write-up.pdf)
 
 
 ## Code Usage
