@@ -77,3 +77,14 @@ This is just code to check the shapes and channels of the model. You can run it 
 This repository is an extension from [this BraTS pipeline](https://github.com/faizan1234567/Brain-Tumors-Segmentation/tree/main). The VFFC method is based on [this repository](https://github.com/aimagelab/vffc/tree/main?tab=readme-ov-file), which was introduced in the following paper:
 *Quattrini, Fabio & Pippi, Vittorio & Cascianelli, Silvia & Cucchiara, Rita. (2023). Volumetric Fast Fourier Convolution for Detecting Ink on the Carbonized Herculaneum Papyri. 10.48550/arXiv.2308.05070.* 
 
+
+## Citation
+If you find this useful, please cite using this:
+```bibtex
+@misc{brats_grl_vffc,
+  author       = {Dillan Imans},
+  title        = {BRATS GRL VFFC Repository},
+  year         = {2025},
+  howpublished = {\url{https://github.com/DillanImans/brats_grl_vffc}},
+}
+
